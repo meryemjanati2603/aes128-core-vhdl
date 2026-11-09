@@ -1,29 +1,29 @@
 AES-128 core: synthesis estimates (GHDL + Yosys). Synthesis only, not place-and-route, nothing run on a board.
-Yosys: Yosys 0.33 (git sha1 2584903a060)
+Yosys: Yosys 0.52 (git sha1 fee39a3284c90249e1d9684cf6944ffbbcbb8f90)
 
 == Lattice iCE40 (synth_ice40), the UP5K has 5280 logic cells ==
      SB_CARRY                        2
      SB_DFFE                       256
      SB_DFFESR                       4
      SB_DFFSR                        1
-     SB_LUT4                      5230
+     SB_LUT4                      7152
 
 == Intel Cyclone V (synth_intel_alm), adaptive LUTs ==
-     MISTRAL_ALUT2                 150
-     MISTRAL_ALUT3                 159
-     MISTRAL_ALUT4                  74
-     MISTRAL_ALUT5                 115
-     MISTRAL_ALUT6                 940
+     MISTRAL_ALUT2                 144
+     MISTRAL_ALUT3                 165
+     MISTRAL_ALUT4                  81
+     MISTRAL_ALUT5                 192
+     MISTRAL_ALUT6                 969
      MISTRAL_ALUT_ARITH              4
      MISTRAL_FF                    261
 
 == Xilinx 7 series (synth_xilinx) ==
      FDRE                          261
-     LUT1                          112
-     LUT2                           29
-     LUT3                           35
-     LUT4                           32
-     LUT5                          211
-     LUT6                         1019
-     MUXF7                         528
-     MUXF8                         208
+     LUT1                           89
+     LUT2                           56
+     LUT3                           30
+     LUT4                           34
+     LUT5                          189
+     LUT6                         1035
+     MUXF7                         525
+     MUXF8                         222
