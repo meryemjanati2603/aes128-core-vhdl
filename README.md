@@ -22,11 +22,11 @@ Synthesis estimates (GHDL + Yosys, no place-and-route, see `synth/report.txt`):
 
 | Target | Result |
 |---|---|
-| Lattice iCE40 | 5230 LUT4 and 261 flip-flops. The iCE40 UP5K has 5280 logic cells, so the core alone would take about 99% of it. |
-| Intel Cyclone V (adaptive LUTs) | about 1440 ALUTs and 261 flip-flops |
-| Xilinx 7 series | 1438 LUTs, 261 flip-flops, 528 MUXF7 and 208 MUXF8 |
+| Lattice iCE40 | about 5200 to 7200 LUT4 (depends on the Yosys version) and 261 flip-flops. The iCE40 UP5K has 5280 logic cells, so the core alone fills it or does not fit. |
+| Intel Cyclone V (adaptive LUTs) | about 1440 to 1560 ALUTs and 261 flip-flops |
+| Xilinx 7 series | about 1430 LUTs, 261 flip-flops, about 525 MUXF7 and 210 to 220 MUXF8 |
 
-These are estimates from Yosys. The official numbers for a device come from its vendor tool (for example Quartus
+These are estimates from Yosys, and they change with its version (Yosys 0.33 gave 5230 LUT4 on iCE40, Yosys 0.52 gives 7152). The official numbers for a device come from its vendor tool (for example Quartus
 for Altera/Intel), which was not used. No clock frequency was measured.
 
 ## How it works
@@ -100,10 +100,10 @@ the standard.
 - **Not protected against side-channel attacks.** The S-boxes are plain lookup tables in logic and nothing is
   masked or balanced. Do not use it where an attacker can measure power, timing or electromagnetic emissions.
 - Synthesis estimates only: no place-and-route, no timing analysis, nothing run on a board, no Quartus or Vivado run.
-- The core is large for small devices (about 99% of the logic cells of an iCE40 UP5K). The S-boxes dominate the
+- The core is too large for small devices such as the iCE40 UP5K (5280 logic cells; 5230 to 7152 LUT4 needed depending on the Yosys version). The S-boxes dominate the
   area; storing them in block RAM or computing a column at a time would reduce it, at the cost of more cycles.
 - No bus wrapper (AXI4-Lite or other): the core has a simple start/busy/done interface.
-- Tested with GHDL 4.1.0 only (VHDL-2008).
+- Tested with GHDL 4.1.0 and 5.0.1 (VHDL-2008), Yosys 0.33 and 0.52.
 
 ## Repository layout
 
